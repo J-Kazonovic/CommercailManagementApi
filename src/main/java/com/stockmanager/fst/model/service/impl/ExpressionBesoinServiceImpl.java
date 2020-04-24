@@ -17,6 +17,7 @@ import com.stockmanager.fst.model.service.facade.EntiteAdmService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinService;
 import com.stockmanager.fst.model.service.facade.PersonnelService;
+import com.stockmanager.fst.model.service.util.Statuts;
 
 @Service
 @Transactional
@@ -62,8 +63,13 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 	@Override
 	public int deleteById(Long id) {
 		int res = ebps.deleteByEbId(id);
-		expbDao.deleteById(id);
+		ExpressionBesoin eb=expbDao.findById(id).get();
+		if(eb.getStatut()==Statuts.A) {
+			return -1;
+		}else {
+			expbDao.deleteById(id);
 		return res;
+		}
 	}
 
 
