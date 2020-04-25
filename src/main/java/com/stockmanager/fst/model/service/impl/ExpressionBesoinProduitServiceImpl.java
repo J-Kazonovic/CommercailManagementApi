@@ -3,6 +3,8 @@ package com.stockmanager.fst.model.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,13 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 		expBsProDao.deleteByEbId(id);
 		return 1;
 
+	}
+
+	@Override
+	@Transactional
+	public int deleteByProduit(String produit) {
+		expBsProDao.deleteByProduit(produit);
+		return 1;
 	}
 
 }

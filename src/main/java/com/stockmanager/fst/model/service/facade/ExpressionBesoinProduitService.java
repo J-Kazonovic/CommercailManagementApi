@@ -10,5 +10,6 @@ public interface ExpressionBesoinProduitService {
 	void valideAndsaveEBP(List<ExpressionBesoinProduit> ebpS,ExpressionBesoin eb);
 	List<ExpressionBesoinProduit> findByEbId(Long ebID);
 	int deleteByEbId(Long id);
+	int deleteByProduit(String produit);
 
 }
