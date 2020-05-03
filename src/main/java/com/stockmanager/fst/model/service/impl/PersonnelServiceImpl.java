@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.stockmanager.fst.bean.Dept;
 import com.stockmanager.fst.bean.Personnel;
 import com.stockmanager.fst.model.dao.PersonnelDao;
-import com.stockmanager.fst.model.service.facade.EntiteAdmService;
+import com.stockmanager.fst.model.service.facade.DeptService;
 import com.stockmanager.fst.model.service.facade.PersonnelService;
 
 
@@ -24,7 +24,7 @@ public class PersonnelServiceImpl implements PersonnelService {
 	
 	
 	@Autowired
-	EntiteAdmService entiteAdmService;
+	DeptService entiteAdmService;
 	
 
 	@Override
@@ -39,8 +39,6 @@ public class PersonnelServiceImpl implements PersonnelService {
 		return personnelRepository.findAll();
 	}
 
-	
-	
 	@Override
 	public List<Personnel> findByEntiteAdmLibelle(String libelle) {
 		return personnelRepository.findByDeptLibelle(libelle);

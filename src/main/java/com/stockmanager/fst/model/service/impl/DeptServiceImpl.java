@@ -8,22 +8,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stockmanager.fst.bean.Dept;
 import com.stockmanager.fst.model.dao.DeptDao;
-import com.stockmanager.fst.model.service.facade.EntiteAdmService;
+import com.stockmanager.fst.model.service.facade.DeptService;
 
 @Service
-public class EntiteAdmServiceImpl implements EntiteAdmService {
+public class DeptServiceImpl implements DeptService {
 
 	@Autowired
-	private DeptDao entiteAdmDao;
+	private DeptDao deptDao;
 
 	@Override
 	public Dept findByLibelle(String libelle) {
-		return entiteAdmDao.findByLibelle(libelle);
+		return deptDao.findByLibelle(libelle);
 	}
 
 	@Override
 	public List<Dept> findAll() {
-		return entiteAdmDao.findAll();
+		return deptDao.findAll();
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class EntiteAdmServiceImpl implements EntiteAdmService {
 			return -1;
 
 		else {
-			entiteAdmDao.save(entite);
+			deptDao.save(entite);
 			return 1;
 		}
 	}
@@ -42,7 +42,7 @@ public class EntiteAdmServiceImpl implements EntiteAdmService {
 	@Override
 	@Transactional
 	public int deleteByLibelle(String libelle) {
-		return entiteAdmDao.deleteByLibelle(libelle);
+		return deptDao.deleteByLibelle(libelle);
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.stockmanager.fst.bean.Dept;
 
-public interface EntiteAdmService {
+public interface DeptService {
 
 	public Dept findByLibelle(String libelle);
 

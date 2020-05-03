@@ -13,7 +13,7 @@ import com.stockmanager.fst.bean.ExpressionBesoin;
 import com.stockmanager.fst.bean.ExpressionBesoinProduit;
 import com.stockmanager.fst.bean.Personnel;
 import com.stockmanager.fst.model.dao.ExpressionBesoinDao;
-import com.stockmanager.fst.model.service.facade.EntiteAdmService;
+import com.stockmanager.fst.model.service.facade.DeptService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinService;
 import com.stockmanager.fst.model.service.facade.PersonnelService;
@@ -29,7 +29,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 	private PersonnelService ps;
 	
 	@Autowired
-	private EntiteAdmService es;
+	private DeptService es;
 
 	@Autowired
 	private ExpressionBesoinProduitService ebps;
