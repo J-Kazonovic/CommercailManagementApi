@@ -27,6 +27,8 @@ public class Category implements Serializable{
 	@OneToMany(mappedBy = "cat")
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<Produit> produits;
+	
+	
 	public Long getId() {
 		return id;
 	}

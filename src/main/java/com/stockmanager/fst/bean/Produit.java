@@ -24,6 +24,7 @@ public class Produit implements Serializable{
 	private double prix;
 	@ManyToOne
 	private Category cat;
+	
 	public Long getId() {
 		return id;
 	}
@@ -43,7 +44,6 @@ public class Produit implements Serializable{
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	
 
 	public Category getCat() {
 		return cat;

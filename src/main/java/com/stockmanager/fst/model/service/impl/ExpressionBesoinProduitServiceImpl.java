@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.ExpressionBesoin;
 import com.stockmanager.fst.bean.ExpressionBesoinProduit;
+import com.stockmanager.fst.bean.Produit;
 import com.stockmanager.fst.model.dao.ExpressionBesoinProduitDao;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
+import com.stockmanager.fst.model.service.facade.ProduitService;
 
 @Service
 public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProduitService {
+	@Autowired
+	private ProduitService ps;
 	@Autowired
 	private ExpressionBesoinProduitDao expBsProDao;
 
@@ -23,7 +27,9 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 		Iterator<ExpressionBesoinProduit> itr = exbProduit.iterator();
 		while (itr.hasNext()) {
 			ExpressionBesoinProduit expBP = itr.next();
+			Produit p=ps.findByLibelle(expBP.getProduit().getLibelle());
 			// Product Exist
+			expBP.setProduit(p);
 			expBP.setEb(eb);
 			expBsProDao.save(expBP);
 
@@ -44,8 +50,8 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 
 	@Override
 	@Transactional
-	public int deleteByProduit(String produit) {
-		expBsProDao.deleteByProduit(produit);
+	public int deleteByProduitLibelle(String libelle) {
+		expBsProDao.deleteByProduitLibelle(libelle);
 		return 1;
 	}
 
