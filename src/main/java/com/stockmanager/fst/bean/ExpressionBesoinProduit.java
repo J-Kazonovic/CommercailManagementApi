@@ -20,8 +20,8 @@ public class ExpressionBesoinProduit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	private String produit;
+	@ManyToOne
+	private Produit produit;
 	
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -58,10 +58,11 @@ public class ExpressionBesoinProduit implements Serializable {
 	
 	
 	
-	public String getProduit() {
+
+	public Produit getProduit() {
 		return produit;
 	}
-	public void setProduit(String produit) {
+	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
 	public String getProduct_desc() {
