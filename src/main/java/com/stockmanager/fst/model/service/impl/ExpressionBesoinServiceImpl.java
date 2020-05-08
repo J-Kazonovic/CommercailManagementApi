@@ -40,7 +40,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 		// get The List Of Product - Test There Existing & Save EBP
 		List<ExpressionBesoinProduit> exbProduit = expb.getEbp();
 		expb.setPersonnel(ps.findByCin("C1"));
-		expb.setDept(es.findByLibelle("d2"));
+		expb.setDept(es.findByLibelle("Informatique"));
 		expb.setSaveDate(new Date());
 		expbDao.save(expb);
 		ebps.valideAndsaveEBP(exbProduit, expb);
