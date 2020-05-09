@@ -9,7 +9,6 @@ import com.stockmanager.fst.bean.ExpressionBesoinProduit;
 public interface ExpressionBesoinProduitService {
 	void valideAndsaveEBP(List<ExpressionBesoinProduit> ebpS,ExpressionBesoin eb);
 	List<ExpressionBesoinProduit> findByEbId(Long ebID);
-	int deleteByEbId(Long id);
-	int deleteByProduitLibelle(String libelle);
+	int deleteByEbpId(Long id);
 
 }

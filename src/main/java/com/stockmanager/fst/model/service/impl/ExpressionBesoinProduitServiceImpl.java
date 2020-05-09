@@ -14,6 +14,7 @@ import com.stockmanager.fst.bean.Produit;
 import com.stockmanager.fst.model.dao.ExpressionBesoinProduitDao;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ProduitService;
+import com.stockmanager.fst.model.service.util.Statuts;
 
 @Service
 public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProduitService {
@@ -42,17 +43,11 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 	}
 
 	@Override
-	public int deleteByEbId(Long id) {
-		expBsProDao.deleteByEbId(id);
-		return 1;
-
-	}
-
-	@Override
-	@Transactional
-	public int deleteByProduitLibelle(String libelle) {
-		expBsProDao.deleteByProduitLibelle(libelle);
+	public int deleteByEbpId(Long id) {
+		expBsProDao.deleteById(id);
 		return 1;
 	}
+
+
 
 }

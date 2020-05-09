@@ -62,9 +62,9 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 	@Override
 	public int deleteById(Long id) {
-		int res = ebps.deleteByEbId(id);
+		int res = ebps.deleteByEbpId(id);
 		ExpressionBesoin eb=expbDao.findById(id).get();
-		if(eb.getStatut()==Statuts.A) {
+		if(eb.getStatut()==Statuts.EnDemande) {
 			return -1;
 		}else {
 			expbDao.deleteById(id);

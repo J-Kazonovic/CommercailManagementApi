@@ -26,9 +26,9 @@ public class ExpressionBesoinProduitRest {
 	public List<ExpressionBesoinProduit> findByEb(@PathVariable Long ebID) {
 		return ebps.findByEbId(ebID);
 	}
-    @DeleteMapping("/libelle/{libelle}")
-	public int deleteByProduit(@PathVariable String libelle) {
-		return ebps.deleteByProduitLibelle(libelle);
+    @DeleteMapping("/{id}")
+	public int deleteByProduit(@PathVariable Long id) {
+		return ebps.deleteByEbpId(id);
 	}
 
     

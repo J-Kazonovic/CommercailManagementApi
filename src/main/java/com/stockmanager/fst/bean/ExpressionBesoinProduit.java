@@ -2,13 +2,17 @@ package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.stockmanager.fst.model.service.util.Statuts;
 
 @Entity
 public class ExpressionBesoinProduit implements Serializable {
@@ -35,6 +39,9 @@ public class ExpressionBesoinProduit implements Serializable {
 	private String product_desc;
 	
 	
+	private String besoin_statut;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,10 +63,12 @@ public class ExpressionBesoinProduit implements Serializable {
 		this.eb = eb;
 	}
 	
-	
-	
-	
-
+	public String getBesoin_statut() {
+		return besoin_statut;
+	}
+	public void setBesoin_statut(String besoin_statut) {
+		this.besoin_statut = besoin_statut;
+	}
 	public Produit getProduit() {
 		return produit;
 	}
