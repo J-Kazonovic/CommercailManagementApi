@@ -31,6 +31,7 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 			Produit p=ps.findByLibelle(expBP.getProduit().getLibelle());
 			// Product Exist
 			expBP.setProduit(p);
+			expBP.setQteAccorde(1);
 			expBP.setEb(eb);
 			expBsProDao.save(expBP);
 
@@ -46,6 +47,11 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 	public int deleteByEbpId(Long id) {
 		expBsProDao.deleteById(id);
 		return 1;
+	}
+
+	@Override
+	public int deleteByEbId(Long id) {
+		return expBsProDao.deleteByEbId(id);
 	}
 
 
