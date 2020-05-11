@@ -35,6 +35,11 @@ public class FournisseurServiceImpl implements FournisseurService {
 		}
 	}
 
+	@Override
+	public List<Fournisseur> findAll() {
+		return fournisseurDao.findAll();
+	}
+
 
 
 }

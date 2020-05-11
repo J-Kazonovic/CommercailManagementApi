@@ -29,7 +29,12 @@ public class DemmandeDesPrixRest {
 
 	@PostMapping("/")
 	public int save(@RequestBody DemmandeDesPrix demmande) {
-		return dmmandeService.save(demmande);
+		return dmmandeService.save(demmande, demmande.getDemmandeItem());
+	}
+
+	@GetMapping("/ref/{ref}")
+	public DemmandeDesPrix findByRef(@PathVariable String ref) {
+		return dmmandeService.findByRef(ref);
 	}
 
 }

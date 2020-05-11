@@ -11,7 +11,7 @@ public interface ExpressionBesoinService {
 	int saveEb(ExpressionBesoin expb);
 	int updateEb(ExpressionBesoin expb);
 	int deleteById(Long id);
-	
+	ExpressionBesoin findByTitle(String title);
 	List<ExpressionBesoin> getAllExpB();
 	List<ExpressionBesoin> getByEntiteAdministrativeLibelle(String libelle);
 	List<ExpressionBesoin> getByPersonnelCin(String cin);

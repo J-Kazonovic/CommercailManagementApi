@@ -18,7 +18,9 @@ public class Fournisseur implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	private String cin;
 	private String nom;
+	private String adress;
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +32,20 @@ public class Fournisseur implements Serializable{
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+	
+	public String getAdress() {
+		return adress;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	
+	public String getCin() {
+		return cin;
+	}
+	public void setCin(String cin) {
+		this.cin = cin;
 	}
 	@Override
 	public int hashCode() {

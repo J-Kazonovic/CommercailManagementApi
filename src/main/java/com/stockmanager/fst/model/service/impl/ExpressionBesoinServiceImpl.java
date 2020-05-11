@@ -92,4 +92,9 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 	public List<ExpressionBesoin> getBySaveDate(Date saveDate) {
 		return expbDao.findBySaveDate(saveDate);
 	}
+
+	@Override
+	public ExpressionBesoin findByTitle(String title) {
+		return expbDao.findByTitle(title);
+	}
 }

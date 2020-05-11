@@ -14,33 +14,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.stockmanager.fst.bean.BonDeCommande;
 import com.stockmanager.fst.bean.BureauDeComptabilite;
-import com.stockmanager.fst.bean.Facture;
-import com.stockmanager.fst.bean.Fournisseur;
+import com.stockmanager.fst.bean.DemmandeDesPrix;
+import com.stockmanager.fst.bean.DemmandeDesPrixItem;
 import com.stockmanager.fst.model.service.facade.BonDeCommandeService;
 import com.stockmanager.fst.model.service.facade.BureauDeComptabiliteService;
-import com.stockmanager.fst.model.service.facade.FactureService;
-import com.stockmanager.fst.model.service.facade.FournisseurService;
+import com.stockmanager.fst.model.service.facade.DemmandeDesPrixItemService;
+import com.stockmanager.fst.model.service.facade.DemmandeDesPrixService;
 
 @RestController
-@RequestMapping("/fournisseur")
+@RequestMapping("/demmandeItem")
 @CrossOrigin(value = "http://localhost:4200", maxAge = 3600)
-public class FournisseurRest {
+public class DemmandeDesPrixItemRest {
 
 	@Autowired
-	private FournisseurService fournisseurService;
-
-	@GetMapping("/nom/{nom}")
-	public Fournisseur findByNom(@PathVariable String nom) {
-		return fournisseurService.findByNom(nom);
-	}
+	private DemmandeDesPrixItemService dmmandeItemService;
 
 	@PostMapping("/")
-	public int save(@RequestBody Fournisseur fournisseur) {
-		return fournisseurService.save(fournisseur);
+	public int save(@RequestBody DemmandeDesPrix demmande) {
+		return dmmandeItemService.save(demmande, demmande.getDemmandeItem());
 	}
-@GetMapping("/")
-	public List<Fournisseur> findAll() {
-		return fournisseurService.findAll();
+
+	@GetMapping("/demmande/ref/{ref}")
+	public List<DemmandeDesPrixItem> findByDemmandeRef(@PathVariable String ref) {
+		return dmmandeItemService.findByDemmandeRef(ref);
 	}
 
 }

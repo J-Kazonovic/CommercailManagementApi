@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class DemmandeDesPrix implements Serializable{
+public class DemmandeDesPrixItem implements Serializable{
 
 	/**
 	 * 
@@ -24,13 +24,12 @@ public class DemmandeDesPrix implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
-	private String ref;
+	private double qteCommander;
+	private double qteLivrer;
 	@ManyToOne
-	private Personnel comptable;
+	private DemmandeDesPrix demmande;
 	@ManyToOne
-	private Fournisseur fournisseur;
-	@OneToMany(mappedBy = "demmande")
-	private List<DemmandeDesPrixItem> demmandeItem;
+	private Produit produit;
 	public Long getId() {
 		return id;
 	}
@@ -38,25 +37,30 @@ public class DemmandeDesPrix implements Serializable{
 		this.id = id;
 	}
 
-	public Fournisseur getFournisseur() {
-		return fournisseur;
+	public double getQteCommander() {
+		return qteCommander;
 	}
-	public void setFournisseur(Fournisseur fournisseur) {
-		this.fournisseur = fournisseur;
+	public void setQteCommander(double qteCommander) {
+		this.qteCommander = qteCommander;
+	}
+	public double getQteLivrer() {
+		return qteLivrer;
+	}
+	public void setQteLivrer(double qteLivrer) {
+		this.qteLivrer = qteLivrer;
+	}
+	public DemmandeDesPrix getDemmande() {
+		return demmande;
+	}
+	public void setDemmande(DemmandeDesPrix demmande) {
+		this.demmande = demmande;
 	}
 
-	public List<DemmandeDesPrixItem> getDemmandeItem() {
-		return demmandeItem;
+	public Produit getProduit() {
+		return produit;
 	}
-	public void setDemmandeItem(List<DemmandeDesPrixItem> demmandeItem) {
-		this.demmandeItem = demmandeItem;
-	}
-	
-	public String getRef() {
-		return ref;
-	}
-	public void setRef(String ref) {
-		this.ref = ref;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 	@Override
 	public int hashCode() {
@@ -73,7 +77,7 @@ public class DemmandeDesPrix implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DemmandeDesPrix other = (DemmandeDesPrix) obj;
+		DemmandeDesPrixItem other = (DemmandeDesPrixItem) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -81,15 +85,9 @@ public class DemmandeDesPrix implements Serializable{
 			return false;
 		return true;
 	}
-	public DemmandeDesPrix() {
+	public DemmandeDesPrixItem() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	public Personnel getComptable() {
-		return comptable;
-	}
-	public void setComptable(Personnel comptable) {
-		this.comptable = comptable;
 	}
 	
 	

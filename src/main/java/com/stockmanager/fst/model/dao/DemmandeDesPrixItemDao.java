@@ -8,8 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.stockmanager.fst.bean.BonDeCommande;
 import com.stockmanager.fst.bean.BureauDeComptabilite;
 import com.stockmanager.fst.bean.DemmandeDesPrix;
+import com.stockmanager.fst.bean.DemmandeDesPrixItem;
 
 @Repository
-public interface DemmandeDesPrixDao extends JpaRepository<DemmandeDesPrix, Long> {
-	public DemmandeDesPrix findByRef(String ref);
+public interface DemmandeDesPrixItemDao extends JpaRepository<DemmandeDesPrixItem, Long> {
+   public List<DemmandeDesPrixItem> findByDemmandeRef(String ref);
 }
