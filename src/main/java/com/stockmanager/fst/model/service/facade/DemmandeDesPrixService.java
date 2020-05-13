@@ -12,6 +12,6 @@ public interface DemmandeDesPrixService {
 
 	public int save(DemmandeDesPrix demmande,List<DemmandeDesPrixItem> demmandeItems);
 
-
+	public List<DemmandeDesPrix> findByFournisseurNom(String nom);
 	
 }

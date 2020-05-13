@@ -12,4 +12,5 @@ import com.stockmanager.fst.bean.DemmandeDesPrix;
 @Repository
 public interface DemmandeDesPrixDao extends JpaRepository<DemmandeDesPrix, Long> {
 	public DemmandeDesPrix findByRef(String ref);
+	public List<DemmandeDesPrix> findByFournisseurNom(String nom);
 }

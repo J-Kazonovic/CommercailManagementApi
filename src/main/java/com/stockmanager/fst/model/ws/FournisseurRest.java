@@ -38,7 +38,8 @@ public class FournisseurRest {
 	public int save(@RequestBody Fournisseur fournisseur) {
 		return fournisseurService.save(fournisseur);
 	}
-@GetMapping("/")
+
+	@GetMapping("/")
 	public List<Fournisseur> findAll() {
 		return fournisseurService.findAll();
 	}

@@ -37,4 +37,9 @@ public class DemmandeDesPrixRest {
 		return dmmandeService.findByRef(ref);
 	}
 
+	@GetMapping("/nom/{nom}")
+	public List<DemmandeDesPrix> findByFournisseurNom(@PathVariable String nom) {
+		return dmmandeService.findByFournisseurNom(nom);
+	}
+
 }

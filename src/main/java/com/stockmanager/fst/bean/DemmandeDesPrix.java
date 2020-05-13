@@ -25,8 +25,8 @@ public class DemmandeDesPrix implements Serializable{
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
-	@ManyToOne
-	private Personnel comptable;
+//	@ManyToOne
+//	private Personnel comptable;
 	@ManyToOne
 	private Fournisseur fournisseur;
 	@OneToMany(mappedBy = "demmande")
@@ -85,12 +85,12 @@ public class DemmandeDesPrix implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Personnel getComptable() {
-		return comptable;
-	}
-	public void setComptable(Personnel comptable) {
-		this.comptable = comptable;
-	}
+//	public Personnel getComptable() {
+//		return comptable;
+//	}
+//	public void setComptable(Personnel comptable) {
+//		this.comptable = comptable;
+//	}
 	
 	
 }
