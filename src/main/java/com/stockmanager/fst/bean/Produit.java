@@ -20,6 +20,8 @@ public class Produit implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	private String ref;
+	private double qte;
 	private String libelle;
 	private double prix;
 	@ManyToOne
@@ -50,6 +52,19 @@ public class Produit implements Serializable{
 	}
 	public void setCat(Category cat) {
 		this.cat = cat;
+	}
+	
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+	public double getQte() {
+		return qte;
+	}
+	public void setQte(double qte) {
+		this.qte = qte;
 	}
 	@Override
 	public int hashCode() {
