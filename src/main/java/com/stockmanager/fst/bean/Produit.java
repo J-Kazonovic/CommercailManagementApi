@@ -1,34 +1,34 @@
 package com.stockmanager.fst.bean;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Produit implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class Produit {
+	
+private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
+	private double qte;
+	private double qteStocke;
 	private String libelle;
-	private String qteStock;
 	private double prix;
-
 	@ManyToOne
 	private Category cat;
-
+	
 	@ManyToOne
 	private Unite unite;
+	
+	
+	
+
+	public Produit() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -38,16 +38,6 @@ public class Produit implements Serializable {
 		this.id = id;
 	}
 
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	
-	
-
 	public String getRef() {
 		return ref;
 	}
@@ -56,12 +46,28 @@ public class Produit implements Serializable {
 		this.ref = ref;
 	}
 
-	public String getQteStock() {
-		return qteStock;
+	public double getQte() {
+		return qte;
 	}
 
-	public void setQteStock(String qteStock) {
-		this.qteStock = qteStock;
+	public void setQte(double qte) {
+		this.qte = qte;
+	}
+
+	public double getQteStocke() {
+		return qteStocke;
+	}
+
+	public void setQteStocke(double qteStocke) {
+		this.qteStocke = qteStocke;
+	}
+
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
 	public double getPrix() {
@@ -93,7 +99,6 @@ public class Produit implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
 
@@ -111,17 +116,11 @@ public class Produit implements Serializable {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (libelle == null) {
-			if (other.libelle != null)
-				return false;
-		} else if (!libelle.equals(other.libelle))
-			return false;
 		return true;
 	}
-
-	public Produit() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	
+	
+	
 
 }

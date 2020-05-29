@@ -12,5 +12,6 @@ public interface ProduitDao extends JpaRepository<Produit, Long> {
 
 	public Produit findByLibelle(String libelle);
 	public List<Produit> findByCatLibelle(String libelle);
+	public int deleteByLibelle(String libelle);
 
 }

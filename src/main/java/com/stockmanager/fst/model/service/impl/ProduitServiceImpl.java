@@ -26,6 +26,7 @@ public class ProduitServiceImpl implements ProduitService {
 
 
 
+
 	@Override
 	public List<Produit> findAll() {
 		return produitDao.findAll();
@@ -34,6 +35,7 @@ public class ProduitServiceImpl implements ProduitService {
 	@Override
 	public int save(Produit produit) {
 		Produit produitFound=findByLibelle(produit.getLibelle());
+
 		Category catDB=cS.findByLibelle(produit.getCat().getLibelle());
 		Unite uniteDB=uS.findByLibelle(produit.getUnite().getLibelle());
 
@@ -42,6 +44,7 @@ public class ProduitServiceImpl implements ProduitService {
 		}else {
 			produit.setCat(catDB);
 			produit.setUnite(uniteDB);
+
 			produitDao.save(produit);
 			return 1;
 		}
@@ -55,6 +58,11 @@ public class ProduitServiceImpl implements ProduitService {
 	@Override
 	public List<Produit> findByCatLibelle(String libelle) {
 		return produitDao.findByCatLibelle(libelle);
+	}
+
+	@Override
+	public int deleteByLibelle(String libelle) {
+		return produitDao.deleteByLibelle(libelle);
 	}
 
 
