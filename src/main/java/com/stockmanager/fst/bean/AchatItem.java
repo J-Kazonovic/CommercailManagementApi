@@ -59,13 +59,14 @@ public class AchatItem implements Serializable{
 		this.achat = demmande;
 	}
 
+	
+	
 	public Produit getProduit() {
 		return produit;
 	}
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
-	
 	public double getTotalPrice() {
 		return totalPrice;
 	}
