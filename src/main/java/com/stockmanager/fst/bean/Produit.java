@@ -8,39 +8,66 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
 @Entity
-public class Produit implements Serializable{
+public class Produit implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String ref;
 	private String libelle;
+	private String qteStock;
 	private double prix;
+
 	@ManyToOne
 	private Category cat;
-	
+
+	@ManyToOne
+	private Unite unite;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 	
+	
+
+	public String getRef() {
+		return ref;
+	}
+
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+
+	public String getQteStock() {
+		return qteStock;
+	}
+
+	public void setQteStock(String qteStock) {
+		this.qteStock = qteStock;
+	}
+
 	public double getPrix() {
 		return prix;
 	}
+
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
@@ -48,9 +75,19 @@ public class Produit implements Serializable{
 	public Category getCat() {
 		return cat;
 	}
+
 	public void setCat(Category cat) {
 		this.cat = cat;
 	}
+
+	public Unite getUnite() {
+		return unite;
+	}
+
+	public void setUnite(Unite unite) {
+		this.unite = unite;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +96,7 @@ public class Produit implements Serializable{
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -80,10 +118,10 @@ public class Produit implements Serializable{
 			return false;
 		return true;
 	}
+
 	public Produit() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 }

@@ -8,29 +8,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Dept implements Serializable{
+public class Dept implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String libelle;
+	
+	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getLibelle() {
 		return libelle;
 	}
+
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -39,6 +46,7 @@ public class Dept implements Serializable{
 		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,10 +68,10 @@ public class Dept implements Serializable{
 			return false;
 		return true;
 	}
+
 	public Dept() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 }

@@ -4,14 +4,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.stockmanager.fst.bean.Dept;
 import com.stockmanager.fst.bean.ExpressionBesoin;
 import com.stockmanager.fst.bean.ExpressionBesoinProduit;
-import com.stockmanager.fst.bean.Personnel;
 import com.stockmanager.fst.model.dao.ExpressionBesoinDao;
 import com.stockmanager.fst.model.service.facade.DeptService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
@@ -36,10 +35,9 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 	@Override
 	public int saveEb(ExpressionBesoin expb) {
-
 		// get The List Of Product - Test There Existing & Save EBP
 		List<ExpressionBesoinProduit> exbProduit = expb.getEbp();
-		expb.setPersonnel(ps.findByCin("C1"));
+		expb.setPersonnel(ps.findByCin("C2"));
 		expb.setDept(es.findByLibelle("Informatique"));
 		expb.setSaveDate(new Date());
 		expbDao.save(expb);
@@ -50,7 +48,6 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 	@Override
 	public int updateEb(ExpressionBesoin expb) {
-		/* get The Personnel */
 
 		// get The List Of Product - Test There Existing & Save EBP
 		List<ExpressionBesoinProduit> exbProduit = expb.getEbp();
@@ -74,8 +71,8 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 
 	@Override
-	public List<ExpressionBesoin> getAllExpB() {
-		return expbDao.findAll();
+	public Page<ExpressionBesoin> getAllExpB(int page) {
+		return expbDao.findAll(PageRequest.of(page, 2));
 	}
 
 	@Override

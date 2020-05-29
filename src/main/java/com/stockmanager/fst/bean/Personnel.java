@@ -28,8 +28,6 @@ public class Personnel implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "entite_id")
 	private Dept dept;
-	@ManyToOne
-	private BureauDeComptabilite comptable;
 	
 	//@Temporal(javax.persistence.TemporalType.DATE)
 	private Date dateAffectation;
@@ -99,13 +97,7 @@ public class Personnel implements Serializable {
 		this.mobile = mobile;
 	}
 
-	public BureauDeComptabilite getComptable() {
-		return comptable;
-	}
 
-	public void setComptable(BureauDeComptabilite comptable) {
-		this.comptable = comptable;
-	}
 
 	@Override
 	public int hashCode() {

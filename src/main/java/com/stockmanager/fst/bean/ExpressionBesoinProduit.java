@@ -2,17 +2,13 @@ package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.stockmanager.fst.model.service.util.Statuts;
 
 @Entity
 public class ExpressionBesoinProduit implements Serializable {

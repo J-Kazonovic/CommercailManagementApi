@@ -1,35 +1,38 @@
 package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-public class DemmandeDesPrixItem implements Serializable{
+public class AchatItem implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
+	
+	private double totalPrice;// totalPrice=unitPrice*qteCommander
 	private double qteCommander;
-	private double qteLivrer;
+	private double qteRecu;
+	
+	
 	@ManyToOne
-	private DemmandeDesPrix demmande;
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	private Achat achat;
 	@ManyToOne
 	private Produit produit;
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -43,17 +46,17 @@ public class DemmandeDesPrixItem implements Serializable{
 	public void setQteCommander(double qteCommander) {
 		this.qteCommander = qteCommander;
 	}
-	public double getQteLivrer() {
-		return qteLivrer;
+	public double getQteRecu() {
+		return qteRecu;
 	}
-	public void setQteLivrer(double qteLivrer) {
-		this.qteLivrer = qteLivrer;
+	public void setQteRecu(double qteLivrer) {
+		this.qteRecu = qteLivrer;
 	}
-	public DemmandeDesPrix getDemmande() {
-		return demmande;
+	public Achat getAchat() {
+		return achat;
 	}
-	public void setDemmande(DemmandeDesPrix demmande) {
-		this.demmande = demmande;
+	public void setAchat(Achat demmande) {
+		this.achat = demmande;
 	}
 
 	public Produit getProduit() {
@@ -62,6 +65,16 @@ public class DemmandeDesPrixItem implements Serializable{
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+	
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,7 +90,7 @@ public class DemmandeDesPrixItem implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DemmandeDesPrixItem other = (DemmandeDesPrixItem) obj;
+		AchatItem other = (AchatItem) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -85,7 +98,7 @@ public class DemmandeDesPrixItem implements Serializable{
 			return false;
 		return true;
 	}
-	public DemmandeDesPrixItem() {
+	public AchatItem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

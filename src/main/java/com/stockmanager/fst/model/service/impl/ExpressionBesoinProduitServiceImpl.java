@@ -3,8 +3,6 @@ package com.stockmanager.fst.model.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,6 @@ import com.stockmanager.fst.bean.Produit;
 import com.stockmanager.fst.model.dao.ExpressionBesoinProduitDao;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ProduitService;
-import com.stockmanager.fst.model.service.util.Statuts;
 
 @Service
 public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProduitService {
@@ -31,16 +28,10 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 			Produit p=ps.findByLibelle(expBP.getProduit().getLibelle());
 			// Product Exist
 			expBP.setProduit(p);
-			expBP.setQteAccorde(1);
 			expBP.setEb(eb);
 			expBsProDao.save(expBP);
 
 		}
-	}
-
-	@Override
-	public List<ExpressionBesoinProduit> findByEbId(Long ebID) {
-		return expBsProDao.findByEbId(ebID);
 	}
 
 	@Override
@@ -52,6 +43,18 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 	@Override
 	public int deleteByEbId(Long id) {
 		return expBsProDao.deleteByEbId(id);
+	}
+	
+	
+	@Override
+	public List<ExpressionBesoinProduit> findByEbId(Long ebID) {
+		return expBsProDao.findByEbId(ebID);
+	}
+	
+
+	@Override
+	public List<ExpressionBesoinProduit> findByAll() {
+		return expBsProDao.findAll();
 	}
 
 

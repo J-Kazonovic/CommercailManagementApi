@@ -43,7 +43,7 @@ public class ExpressionBesoin implements Serializable {
 	@ManyToOne
 	private Dept dept;
 	@ManyToOne
-	private DemmandeDesPrix demande;
+	private Achat demande;
 	
 	@OneToMany(mappedBy = "eb") 
 	private List<ExpressionBesoinProduit> ebp;
@@ -79,12 +79,12 @@ public class ExpressionBesoin implements Serializable {
 
 
 
-	public DemmandeDesPrix getDemande() {
+	public Achat getDemande() {
 		return demande;
 	}
 
 
-	public void setDemande(DemmandeDesPrix demande) {
+	public void setDemande(Achat demande) {
 		this.demande = demande;
 	}
 

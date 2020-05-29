@@ -21,7 +21,13 @@ public class ExpressionBesoinProduitRest {
 	
 	@Autowired
 	private ExpressionBesoinProduitService ebps;
+	
+	@GetMapping("/")
+	public List<ExpressionBesoinProduit> findByAll() {
+		return ebps.findByAll();
+	}
 
+	
 	@GetMapping("/{ebID}")
 	public List<ExpressionBesoinProduit> findByEb(@PathVariable Long ebID) {
 		return ebps.findByEbId(ebID);

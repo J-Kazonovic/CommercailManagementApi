@@ -11,6 +11,13 @@ import com.stockmanager.fst.bean.ExpressionBesoinProduit;
 
 @Repository
 public interface ExpressionBesoinProduitDao extends JpaRepository<ExpressionBesoinProduit, Long> {
-	List<ExpressionBesoinProduit> findByEbId(Long ebID);
+	
 	int deleteByEbId(Long id);
+	
+	List<ExpressionBesoinProduit> findByEbId(Long ebID);
+	List<ExpressionBesoinProduit> findByEbDeptLibelle(String libelle);
+	List<ExpressionBesoinProduit> findByProduitCatLibelle(String libelle);
+	List<ExpressionBesoinProduit> findByProduitLibelle(String libelle);
+
+	
 }

@@ -6,9 +6,12 @@ import java.util.List;
 import com.stockmanager.fst.bean.Fournisseur;
 
 public interface FournisseurService {
-	public Fournisseur findByNom(String nom);
-
-	public int save(Fournisseur fournisseur);
-    public List<Fournisseur> findAll();
+	
+     int save(Fournisseur fournisseur);
+     int update(Fournisseur fournisseur);
+     int delete(Long id);
+	 Fournisseur findByNom(String nom);
+	 List<Fournisseur> findByNomContaining(String term);
+     List<Fournisseur> findAll();
 	
 }

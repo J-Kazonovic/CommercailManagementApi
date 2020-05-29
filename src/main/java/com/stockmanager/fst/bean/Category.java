@@ -1,6 +1,7 @@
 package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
 
 @Entity
 public class Category implements Serializable{
@@ -79,7 +78,6 @@ public class Category implements Serializable{
 	}
 	public Category() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

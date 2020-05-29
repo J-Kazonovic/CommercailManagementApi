@@ -2,8 +2,6 @@ package com.stockmanager.fst.model.service.facade;
 
 import java.util.List;
 
-import org.springframework.data.repository.query.Param;
-
 import com.stockmanager.fst.bean.Personnel;
 
 

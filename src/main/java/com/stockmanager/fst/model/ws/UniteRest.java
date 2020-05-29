@@ -1,5 +1,6 @@
 package com.stockmanager.fst.model.ws;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,30 +12,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.stockmanager.fst.bean.BureauDeComptabilite;
-import com.stockmanager.fst.model.service.facade.BureauDeComptabiliteService;
+import com.stockmanager.fst.bean.Unite;
+import com.stockmanager.fst.model.service.facade.UniteService;
 
 @RestController
-@RequestMapping("/bureauDeComptabilite")
+@RequestMapping("/unite")
 @CrossOrigin(value = "http://localhost:4200", maxAge = 3600)
-public class BureauDeComptabiliteRest {
+public class UniteRest {
 
 	@Autowired
-	private BureauDeComptabiliteService comptableService;
+	private UniteService uniteService;
 
 	@GetMapping("/libelle/{libelle}")
-	public BureauDeComptabilite findByLibelle(@PathVariable String libelle) {
-		return comptableService.findByLibelle(libelle);
+	public Unite findByLibelle(@PathVariable String libelle) {
+		return uniteService.findByLibelle(libelle);
+	}
+
+	@GetMapping("/")
+	public List<Unite> findAll() {
+		return uniteService.findAll();
+	}
+
+	@PostMapping("/")
+	public int save(@RequestBody Unite unite) {
+		return uniteService.save(unite);
 	}
 
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
-		return comptableService.deleteByLibelle(libelle);
-	}
-
-	@PostMapping("/")
-	public int save(@RequestBody BureauDeComptabilite bureauDeComptabilite) {
-		return comptableService.save(bureauDeComptabilite);
+		return uniteService.deleteByLibelle(libelle);
 	}
 
 }
