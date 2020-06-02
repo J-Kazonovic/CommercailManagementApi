@@ -65,5 +65,10 @@ public class ProduitServiceImpl implements ProduitService {
 		return produitDao.deleteByLibelle(libelle);
 	}
 
+	@Override
+	public Produit findByRef(String ref) {
+		return produitDao.findByRef(ref);
+	}
+
 
 }

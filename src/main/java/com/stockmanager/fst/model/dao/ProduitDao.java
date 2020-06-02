@@ -9,7 +9,7 @@ import com.stockmanager.fst.bean.Produit;
 
 @Repository
 public interface ProduitDao extends JpaRepository<Produit, Long> {
-
+	public Produit findByRef(String ref);
 	public Produit findByLibelle(String libelle);
 	public List<Produit> findByCatLibelle(String libelle);
 	public int deleteByLibelle(String libelle);

@@ -28,6 +28,11 @@ public class ProduitRest {
 		return produitService.findByCatLibelle(libelle);
 	}
 
+	@GetMapping("/ref/{ref}")
+	public Produit findByRef(@PathVariable String ref) {
+		return produitService.findByRef(ref);
+	}
+
 	@GetMapping("/")
 	public List<Produit> findAll() {
 		return produitService.findAll();
@@ -42,6 +47,7 @@ public class ProduitRest {
 	public Produit findByLibelle(@PathVariable String libelle) {
 		return produitService.findByLibelle(libelle);
 	}
+
 	@DeleteMapping("/libelle/{libelle}")
 	public int deleteByLibelle(@PathVariable String libelle) {
 		return produitService.deleteByLibelle(libelle);

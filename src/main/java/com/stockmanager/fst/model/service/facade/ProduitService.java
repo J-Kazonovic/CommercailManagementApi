@@ -5,7 +5,7 @@ import java.util.List;
 import com.stockmanager.fst.bean.Produit;
 
 public interface ProduitService {
-
+	public Produit findByRef(String ref);
 	public List<Produit> findByCatLibelle(String libelle);
 	public List<Produit> findAll();
 	public int deleteByLibelle(String libelle);
