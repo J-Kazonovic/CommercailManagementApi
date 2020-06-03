@@ -72,7 +72,7 @@ public class ExpressionBesoinServiceImpl implements ExpressionBesoinService {
 
 	@Override
 	public Page<ExpressionBesoin> getAllExpB(int page) {
-		return expbDao.findAll(PageRequest.of(page, 2));
+		return expbDao.findAll(PageRequest.of(page, 8));
 	}
 
 	@Override

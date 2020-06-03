@@ -20,6 +20,7 @@ public class AchatItem implements Serializable{
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	
+	private double unitPrice;
 	private double totalPrice;// totalPrice=unitPrice*qteCommander
 	private double qteCommander;
 	private double qteRecu;
@@ -61,6 +62,13 @@ public class AchatItem implements Serializable{
 
 	
 	
+	
+	public double getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 	public Produit getProduit() {
 		return produit;
 	}

@@ -3,6 +3,8 @@ package com.stockmanager.fst.model.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.Category;
@@ -18,24 +20,15 @@ public class ProduitServiceImpl implements ProduitService {
 
 	@Autowired
 	private ProduitDao produitDao;
-	
 	@Autowired
 	private CategoryService cS;
 	@Autowired
 	private UniteService uS;
 
-
-
-
-	@Override
-	public List<Produit> findAll() {
-		return produitDao.findAll();
-	}
-
+	
 	@Override
 	public int save(Produit produit) {
 		Produit produitFound=findByLibelle(produit.getLibelle());
-
 		Category catDB=cS.findByLibelle(produit.getCat().getLibelle());
 		Unite uniteDB=uS.findByLibelle(produit.getUnite().getLibelle());
 
@@ -49,26 +42,54 @@ public class ProduitServiceImpl implements ProduitService {
 			return 1;
 		}
 	}
-
+	
 	@Override
-	public Produit findByLibelle(String libelle) {
-		return produitDao.findByLibelle(libelle);
+	public int update(Produit produit) {
+		Produit produitFound=findByLibelle(produit.getLibelle());
+		Category catDB=cS.findByLibelle(produit.getCat().getLibelle());
+		Unite uniteDB=uS.findByLibelle(produit.getUnite().getLibelle());
+
+		if(produitFound!=null) {
+			produit.setCat(catDB);
+			produit.setUnite(uniteDB);
+			produitDao.save(produit);
+			return 1;
+		}else {
+			
+			return -1;
+		}
+	}
+	
+	@Override
+	public int delete(Long id) {
+		 produitDao.deleteById(id);
+		 return 1;
 	}
 
+	
+	@Override
+	public Page<Produit> findAll(int page) {
+		return produitDao.findAll(PageRequest.of(page, 8));
+	}
+	
 	@Override
 	public List<Produit> findByCatLibelle(String libelle) {
 		return produitDao.findByCatLibelle(libelle);
 	}
-
+	
 	@Override
-	public int deleteByLibelle(String libelle) {
-		return produitDao.deleteByLibelle(libelle);
+	public Produit findByLibelle(String libelle) {
+		return produitDao.findByLibelle(libelle);
 	}
-
+	
 	@Override
 	public Produit findByRef(String ref) {
 		return produitDao.findByRef(ref);
 	}
+
+	
+	
+
 
 
 }

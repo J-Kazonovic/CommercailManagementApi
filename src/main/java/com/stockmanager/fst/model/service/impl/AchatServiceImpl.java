@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,9 +45,6 @@ public class AchatServiceImpl implements AchatService {
 			achat.setDateCommande(new Date());
 			achat.setComptable(ps.findByCin("C1"));
 			achat.setFournisseur(fr);
-			calculatTotal(achatItems, achat);
-			
-			
 			Achat achatR=achatDao.save(achat);
 			aiS.valideAndsaveAI(achatItems, achat);
 			return achatR;
@@ -63,10 +62,8 @@ public class AchatServiceImpl implements AchatService {
 			achat.setDateCommande(new Date());
 			achat.setComptable(ps.findByCin("C1"));
 			achat.setFournisseur(fr);
-			calculatTotal(achatItems, achat);
 			achatDao.save(achat);
 			aiS.valideAndsaveAI(achatItems, achat);
-			System.out.println(achat);
 			return 1;
 		}
 		
@@ -97,13 +94,12 @@ public class AchatServiceImpl implements AchatService {
 
 
 	@Override
-	public List<Achat> findAll() {
-		return achatDao.findAll();
+	public Page<Achat> findAll(int page) {
+		return achatDao.findAll(PageRequest.of(page, 8));
 	}
 
 	
 	public void calculatTotal(List<AchatItem> items,Achat achat) {
-		
 		items.forEach(item->{
 			total=total+(item.getQteCommander()*item.getProduit().getPrix());
 		});

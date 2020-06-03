@@ -2,13 +2,20 @@ package com.stockmanager.fst.model.service.facade;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.stockmanager.fst.bean.Produit;
 
 public interface ProduitService {
-	public Produit findByRef(String ref);
-	public List<Produit> findByCatLibelle(String libelle);
-	public List<Produit> findAll();
-	public int deleteByLibelle(String libelle);
-	public int save(Produit produit);
-	public Produit findByLibelle(String libelle);
+	
+	int save(Produit produit);
+	int update(Produit produit);
+	int delete(Long id);
+
+	Produit findByRef(String ref);
+	Produit findByLibelle(String libelle);
+
+	List<Produit> findByCatLibelle(String libelle);
+	Page<Produit> findAll(int page);
+
 }
