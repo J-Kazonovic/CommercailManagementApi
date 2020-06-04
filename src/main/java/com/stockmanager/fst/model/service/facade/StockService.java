@@ -15,7 +15,7 @@ public interface StockService {
 	int deleteById(Long id);
 
 	Stock findByRef(String ref);
-
+	int update(Stock stock, List<StockItem> stockItems);
 	List<Stock> findAll();
 
 }

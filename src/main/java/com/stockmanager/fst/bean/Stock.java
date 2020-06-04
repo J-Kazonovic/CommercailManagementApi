@@ -31,9 +31,8 @@ public class Stock implements Serializable {
 	private double qteInitiale;
 	@Temporal(TemporalType.DATE)
 	private Date dateResu;
-	@ManyToOne
-	private Personnel comptable;
 	@OneToMany(mappedBy = "stock")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private List<StockItem> stockItems;
 
 	public Long getId() {
@@ -60,13 +59,6 @@ public class Stock implements Serializable {
 		this.stockItems = stockItems;
 	}
 
-	public Personnel getComptable() {
-		return comptable;
-	}
-
-	public void setComptable(Personnel comptable) {
-		this.comptable = comptable;
-	}
 
 	public double getQteInitiale() {
 		return qteInitiale;

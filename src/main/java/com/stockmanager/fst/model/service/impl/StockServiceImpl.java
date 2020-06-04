@@ -34,12 +34,7 @@ public class StockServiceImpl implements StockService {
 
 	@Autowired
 	private PersonnelService ps;
-
 	
-
-
-
-
 	@Override
 	public int save(Stock stock, List<StockItem> stockItems) {
 		Stock stockFound=findByRef(stock.getRef());
@@ -75,6 +70,19 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public List<Stock> findByDateResu(Date dateResu) {
 		return stockDao.findByDateResu(dateResu);
+	}
+	@Override
+	public int update(Stock stock, List<StockItem> stockItems) {
+		Stock stockFound=findByRef(stock.getRef());
+		if(stockFound==null) {
+			return -1;
+		}else {
+
+			stock.setDateResu(new Date());
+			stockDao.save(stock);
+			stockI.save( stock,  stockItems);
+			return 1;
+		}
 	}
 
 	

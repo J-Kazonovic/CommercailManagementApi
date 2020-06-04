@@ -14,8 +14,6 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
-	private double qte;
-	private double qteStocke;
 	private String libelle;
 	private double prix;
 	@ManyToOne
@@ -47,21 +45,8 @@ private static final long serialVersionUID = 1L;
 		this.ref = ref;
 	}
 
-	public double getQte() {
-		return qte;
-	}
 
-	public void setQte(double qte) {
-		this.qte = qte;
-	}
 
-	public double getQteStocke() {
-		return qteStocke;
-	}
-
-	public void setQteStocke(double qteStocke) {
-		this.qteStocke = qteStocke;
-	}
 
 	public String getLibelle() {
 		return libelle;

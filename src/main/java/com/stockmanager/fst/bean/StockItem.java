@@ -28,6 +28,7 @@ public class StockItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
+	private double qteStocke;
     private double qtAlerte;
     private double qtFinal;
 	@ManyToOne
@@ -46,7 +47,13 @@ public class StockItem implements Serializable {
 
 
 
+	public double getQteStocke() {
+		return qteStocke;
+	}
 
+	public void setQteStocke(double qteStocke) {
+		this.qteStocke = qteStocke;
+	}
 
 	public double getQtAlerte() {
 		return qtAlerte;

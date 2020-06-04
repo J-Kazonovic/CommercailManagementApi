@@ -38,6 +38,10 @@ public class StockRest {
 	public int save(@RequestBody Stock stock) {
 		return stockService.save(stock, stock.getStockItems());
 	}
+	@PutMapping("/")
+	public int update(@RequestBody Stock stock) {
+		return stockService.update(stock, stock.getStockItems());
+	}
 
 	@DeleteMapping("/id/{id}")
 	public int deleteById(@PathVariable Long id) {
