@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -47,6 +49,9 @@ public class Achat implements Serializable {
 
 	@OneToMany(mappedBy = "achat") 
 	private List<AchatItem> achatItems;
+	
+	@OneToMany(mappedBy = "achat") 
+	private List<Paiement> paiments;
 
 	private double total;// Total Si l'achat devient une Bon de Commande
 	private double totalPaier;// totalPaier=totalPaier + montentPaiment
