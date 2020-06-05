@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,8 +65,8 @@ public class StockServiceImpl implements StockService {
 	}
 
 	@Override
-	public List<Stock> findAll() {
-		return stockDao.findAll();
+	public Page<Stock> findAll(int page) {
+		return stockDao.findAll(PageRequest.of(page, 8));
 	}
 
 	@Override

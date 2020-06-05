@@ -3,6 +3,8 @@ package com.stockmanager.fst.model.service.facade;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.stockmanager.fst.bean.AchatItem;
 import com.stockmanager.fst.bean.Stock;
 import com.stockmanager.fst.bean.StockItem;
@@ -16,6 +18,5 @@ public interface StockService {
 
 	Stock findByRef(String ref);
 	int update(Stock stock, List<StockItem> stockItems);
-	List<Stock> findAll();
-
+	Page<Stock> findAll(int page);
 }
