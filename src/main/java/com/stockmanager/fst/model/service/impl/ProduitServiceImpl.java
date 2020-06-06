@@ -37,7 +37,6 @@ public class ProduitServiceImpl implements ProduitService {
 		}else {
 			produit.setCat(catDB);
 			produit.setUnite(uniteDB);
-
 			produitDao.save(produit);
 			return 1;
 		}
@@ -45,7 +44,7 @@ public class ProduitServiceImpl implements ProduitService {
 	
 	@Override
 	public int update(Produit produit) {
-		Produit produitFound=findByLibelle(produit.getLibelle());
+		Produit produitFound=produitDao.findById(produit.getId()).get();
 		Category catDB=cS.findByLibelle(produit.getCat().getLibelle());
 		Unite uniteDB=uS.findByLibelle(produit.getUnite().getLibelle());
 
