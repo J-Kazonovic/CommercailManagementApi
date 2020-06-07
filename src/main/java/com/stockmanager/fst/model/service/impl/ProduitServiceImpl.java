@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.Category;
 import com.stockmanager.fst.bean.Produit;
+import com.stockmanager.fst.bean.Stock;
 import com.stockmanager.fst.bean.Unite;
 import com.stockmanager.fst.model.dao.ProduitDao;
 import com.stockmanager.fst.model.service.facade.CategoryService;
@@ -61,7 +62,8 @@ public class ProduitServiceImpl implements ProduitService {
 	
 	@Override
 	public int delete(Long id) {
-		 produitDao.deleteById(id);
+		Produit pr=produitDao.findById(id).get();
+		 produitDao.deleteById(pr.getId());
 		 return 1;
 	}
 
