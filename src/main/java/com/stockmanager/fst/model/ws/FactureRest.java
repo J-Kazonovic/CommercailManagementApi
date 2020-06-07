@@ -21,7 +21,7 @@ import com.stockmanager.fst.model.service.facade.AchatService;
 import com.stockmanager.fst.model.service.facade.FactureService;
 
 @RestController
-@RequestMapping("/facture")
+@RequestMapping("/factures")
 @CrossOrigin(value = "http://localhost:4200", maxAge = 3600)
 public class FactureRest {
 
@@ -32,10 +32,17 @@ public class FactureRest {
 	public int save(@RequestBody Facture facture) {
 		return factureService.save(facture);
 	}
+	
+
+	@PutMapping("/")
+	public int update(@RequestBody Facture facture) {
+		return factureService.update(facture);
+	}
+	
 
 	@DeleteMapping("/id/{id}")
 	public int deleteById(@PathVariable Long id) {
-		return factureService.deleteById(id);
+		return factureService.delete(id);
 	}
 
 	@GetMapping("/ref/{ref}")

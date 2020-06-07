@@ -7,26 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.Achat;
+import com.stockmanager.fst.bean.Facture;
 import com.stockmanager.fst.bean.Paiement;
 import com.stockmanager.fst.model.dao.PaiementDao;
 import com.stockmanager.fst.model.service.facade.AchatService;
+import com.stockmanager.fst.model.service.facade.FactureService;
 import com.stockmanager.fst.model.service.facade.PaiementService;
 
 @Service
 public class PaiementServiceImpl implements PaiementService {
 	
 	@Autowired
-	private AchatService aS;
+	private FactureService fS;
 	@Autowired
 	private PaiementDao pDao;
 
 	@Override
 	public int save(Paiement p) {
-		Achat achatDB=aS.findByRef(p.getAchat().getRef());
-		if(achatDB==null) {
+		Facture factureDB=fS.findByRef(p.getFacture().getRef());
+		if(factureDB==null) {
 			return -1;
 		}else {
-			p.setAchat(achatDB);
+			p.setAchat(factureDB);
 			p.setPaiementDate(new Date());
 			pDao.save(p);
 			return 1;
@@ -37,7 +39,7 @@ public class PaiementServiceImpl implements PaiementService {
 
 	@Override
 	public int update(Paiement p) {
-		Achat achatDB=aS.findByRef(p.getAchat().getRef());
+		Facture achatDB=fS.findByRef(p.getFacture().getRef());
 		if(achatDB==null) {
 			return -1;
 		}else {
@@ -60,15 +62,7 @@ public class PaiementServiceImpl implements PaiementService {
 
 	@Override
 	public List<Paiement> findByAchatRef(String ref) {
-		return pDao.findByAchatRef(ref);
-	}
-	
-	
-	
-	void updateAchatTotal(Achat achat,Paiement p) {
-		double tp=achat.getTotalPaier();
-		achat.setTotalPaier(tp + p.getMontent());
-		achat.setTotalRester(achat.getTotal()-achat.getTotalPaier());
+		return pDao.findByFactureRef(ref);
 	}
 
 }

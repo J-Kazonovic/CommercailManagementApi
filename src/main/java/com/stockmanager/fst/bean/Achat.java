@@ -4,13 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -50,8 +53,12 @@ public class Achat implements Serializable {
 	@OneToMany(mappedBy = "achat") 
 	private List<AchatItem> achatItems;
 	
-	@OneToMany(mappedBy = "achat") 
-	private List<Paiement> paiments;
+	@OneToOne (cascade = CascadeType.ALL)
+	@JoinColumn (referencedColumnName ="id")
+	private Facture facture;
+	
+	
+	
 
 	private double total;// Total Si l'achat devient une Bon de Commande
 	private double totalPaier;// totalPaier=totalPaier + montentPaiment

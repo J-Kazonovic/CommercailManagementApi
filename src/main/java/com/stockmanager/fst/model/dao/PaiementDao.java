@@ -9,7 +9,5 @@ import com.stockmanager.fst.bean.Paiement;
 
 @Repository
 public interface PaiementDao extends JpaRepository<Paiement, Long>{
-	List<Paiement> findByAchatRef(String ref);
-
-
+	List<Paiement> findByFactureRef(String ref);
 }

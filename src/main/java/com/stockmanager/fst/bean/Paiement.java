@@ -26,7 +26,7 @@ public class Paiement implements Serializable{
 	private Date paiementDate;
 	
 	@ManyToOne
-	private Achat achat;
+	private Facture facture;
 
 	public Long getId() {
 		return id;
@@ -52,12 +52,12 @@ public class Paiement implements Serializable{
 		this.paiementDate = paimentDate;
 	}
 
-	public Achat getAchat() {
-		return achat;
+	public Facture getFacture() {
+		return facture;
 	}
 
-	public void setAchat(Achat achat) {
-		this.achat = achat;
+	public void setAchat(Facture facture) {
+		this.facture = facture;
 	}
 
 	@Override

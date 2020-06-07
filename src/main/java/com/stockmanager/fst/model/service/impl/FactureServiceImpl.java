@@ -41,9 +41,20 @@ public class FactureServiceImpl implements FactureService {
 		}
 
 	}
+	
+	@Override
+	public int update(Facture facture) {
+		Facture fr=findByRef(facture.getRef());
+		if(fr!=null) {
+			factureDao.save(facture);
+			return 1;
+		}else {
+			return -1;
+		}
+	}
 
 	@Override
-	public int deleteById(Long id) {
+	public int delete(Long id) {
 		Facture fr=factureDao.findById(id).get();
 		factureDao.deleteById(fr.getId());
 		return 1;
@@ -59,6 +70,8 @@ public class FactureServiceImpl implements FactureService {
 	public List<Facture> findAll() {
 		return factureDao.findAll();
 	}
+
+
 	
 
 	

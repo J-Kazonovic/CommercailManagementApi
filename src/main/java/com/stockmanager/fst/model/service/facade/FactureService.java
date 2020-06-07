@@ -11,8 +11,8 @@ import com.stockmanager.fst.bean.Achat;
 public interface FactureService {
 
 	int save(Facture facture);
-
-	int deleteById(Long id);
+	int update(Facture facture);
+	int delete(Long id);
 
 	Facture findByRef(String ref);
 

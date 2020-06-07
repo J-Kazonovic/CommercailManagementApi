@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,6 +31,15 @@ public class Facture implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String ref;
+	@Temporal(TemporalType.DATE)
+	private Date dateDeFac;
+	private String etat;
+	
+	@OneToOne(mappedBy= "facture")
+	private Achat achat;
+	
+	@OneToMany(mappedBy = "facture") 
+	private List<Paiement> paiments;
 
 	public Long getId() {
 		return id;
@@ -45,6 +55,22 @@ public class Facture implements Serializable {
 
 	public void setRef(String ref) {
 		this.ref = ref;
+	}
+	
+	public Date getDateDeFac() {
+		return dateDeFac;
+	}
+
+	public void setDateDeFac(Date dateDeFac) {
+		this.dateDeFac = dateDeFac;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
 	}
 
 	@Override

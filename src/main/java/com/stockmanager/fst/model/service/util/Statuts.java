@@ -17,5 +17,11 @@ public class Statuts {
 	public final static String DEMMANDE= "Demmande De Prix";
 	public final static String DEVI_RECU = "Devis Récu";
 	public final static String COMMANDE = "Bon De Commande";
+	
+	// Statut De Facture
+	public final static String VALIDER = "Valider";
+	public final static String PAYER = "Payé";
+	
+	
 
 }
