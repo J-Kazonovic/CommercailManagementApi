@@ -12,10 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stockmanager.fst.bean.Achat;
 import com.stockmanager.fst.bean.AchatItem;
+import com.stockmanager.fst.bean.Facture;
 import com.stockmanager.fst.bean.Fournisseur;
 import com.stockmanager.fst.model.dao.AchatDao;
 import com.stockmanager.fst.model.service.facade.AchatItemService;
 import com.stockmanager.fst.model.service.facade.AchatService;
+import com.stockmanager.fst.model.service.facade.FactureService;
 import com.stockmanager.fst.model.service.facade.FournisseurService;
 import com.stockmanager.fst.model.service.facade.PersonnelService;
 import com.stockmanager.fst.model.service.util.Statuts;
@@ -32,6 +34,8 @@ public class AchatServiceImpl implements AchatService {
 	private FournisseurService fourn;
 	@Autowired
 	private PersonnelService ps;
+	@Autowired
+	private FactureService fS;
 	
 	double total=0;
 	

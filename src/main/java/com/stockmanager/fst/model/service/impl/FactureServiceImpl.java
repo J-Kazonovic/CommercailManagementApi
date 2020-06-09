@@ -26,16 +26,21 @@ import com.stockmanager.fst.model.service.util.Statuts;
 @Service
 @Transactional
 public class FactureServiceImpl implements FactureService {
+	
+	@Autowired
+	private AchatService aS;
 
 	@Autowired
 	private FactureDao factureDao;
 
 	@Override
 	public int save(Facture facture) {
+		Achat achat=aS.findByRef(facture.getAchat().getRef());
 		Facture fr=findByRef(facture.getRef());
 		if(fr!=null) {
 			return -1;
 		}else {
+			facture.setAchat(achat);
 			factureDao.save(facture);
 			return 1;
 		}
@@ -44,8 +49,10 @@ public class FactureServiceImpl implements FactureService {
 	
 	@Override
 	public int update(Facture facture) {
-		Facture fr=findByRef(facture.getRef());
+		Achat achat=aS.findByRef(facture.getAchat().getRef());
+		Facture fr=factureDao.findById(facture.getId()).get();
 		if(fr!=null) {
+			facture.setAchat(achat);
 			factureDao.save(facture);
 			return 1;
 		}else {
@@ -70,6 +77,18 @@ public class FactureServiceImpl implements FactureService {
 	public List<Facture> findAll() {
 		return factureDao.findAll();
 	}
+
+	@Override
+	public Facture findByAchatRef(String ref) {
+		Achat achat=aS.findByRef(ref);
+		return factureDao.findByAchatId(achat.getId());
+	}
+	
+	
+	
+	
+	
+
 
 
 	

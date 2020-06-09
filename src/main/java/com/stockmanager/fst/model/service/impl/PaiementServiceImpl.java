@@ -28,7 +28,7 @@ public class PaiementServiceImpl implements PaiementService {
 		if(factureDB==null) {
 			return -1;
 		}else {
-			p.setAchat(factureDB);
+			p.setFacture(factureDB);
 			p.setPaiementDate(new Date());
 			pDao.save(p);
 			return 1;
@@ -43,7 +43,7 @@ public class PaiementServiceImpl implements PaiementService {
 		if(achatDB==null) {
 			return -1;
 		}else {
-			p.setAchat(achatDB);
+			p.setFacture(achatDB);
 			pDao.save(p);
 			return 1;
 		}
@@ -61,7 +61,7 @@ public class PaiementServiceImpl implements PaiementService {
 	}
 
 	@Override
-	public List<Paiement> findByAchatRef(String ref) {
+	public List<Paiement> findByFactureRef(String ref) {
 		return pDao.findByFactureRef(ref);
 	}
 

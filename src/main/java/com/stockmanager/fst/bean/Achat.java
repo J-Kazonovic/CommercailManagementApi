@@ -53,8 +53,8 @@ public class Achat implements Serializable {
 	@OneToMany(mappedBy = "achat") 
 	private List<AchatItem> achatItems;
 	
-	@OneToOne (cascade = CascadeType.ALL)
-	@JoinColumn (referencedColumnName ="id")
+	@OneToOne(mappedBy="achat")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Facture facture;
 	
 	
@@ -159,6 +159,9 @@ public class Achat implements Serializable {
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
+	
+	
+
 
 	@Override
 	public int hashCode() {

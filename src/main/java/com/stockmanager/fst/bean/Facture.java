@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -35,7 +39,8 @@ public class Facture implements Serializable {
 	private Date dateDeFac;
 	private String etat;
 	
-	@OneToOne(mappedBy= "facture")
+	@OneToOne
+	@JoinColumn(name = "achat_id")
 	private Achat achat;
 	
 	@OneToMany(mappedBy = "facture") 
@@ -71,6 +76,24 @@ public class Facture implements Serializable {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+	
+	
+
+	public Achat getAchat() {
+		return achat;
+	}
+
+	public void setAchat(Achat achat) {
+		this.achat = achat;
+	}
+
+	public List<Paiement> getPaiments() {
+		return paiments;
+	}
+
+	public void setPaiments(List<Paiement> paiments) {
+		this.paiments = paiments;
 	}
 
 	@Override

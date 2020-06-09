@@ -10,5 +10,6 @@ import com.stockmanager.fst.bean.Facture;
 
 @Repository
 public interface FactureDao extends JpaRepository<Facture, Long> {
-	public Facture findByRef(String ref);
+	Facture findByRef(String ref);
+	Facture findByAchatId(Long id);
 }

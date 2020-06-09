@@ -14,8 +14,10 @@ public interface FactureService {
 	int update(Facture facture);
 	int delete(Long id);
 
-	Facture findByRef(String ref);
-
 	List<Facture> findAll();
+	Facture findByRef(String ref);
+	Facture findByAchatRef(String ref);
+
+	
 
 }

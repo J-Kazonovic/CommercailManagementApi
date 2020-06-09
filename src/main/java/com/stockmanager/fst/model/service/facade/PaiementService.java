@@ -14,7 +14,7 @@ public interface PaiementService {
 	int delete(Long id);
 	
 	List<Paiement> findAll();
-	List<Paiement> findByAchatRef(String ref);
+	List<Paiement> findByFactureRef(String ref);
 	
 	
 

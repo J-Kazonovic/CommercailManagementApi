@@ -45,14 +45,24 @@ public class FactureRest {
 		return factureService.delete(id);
 	}
 
-	@GetMapping("/ref/{ref}")
-	public Facture findByRef(@PathVariable String ref) {
-		return factureService.findByRef(ref);
-	}
+
 
 	@GetMapping("/")
 	public List<Facture> findAll() {
 		return factureService.findAll();
 	}
+	
+	@GetMapping("/ref/{ref}")
+	public Facture findByRef(@PathVariable String ref) {
+		return factureService.findByRef(ref);
+	}
+
+
+	@GetMapping("achat/ref/{ref}")
+	public Facture findByAchatRef(@PathVariable String ref) {
+		return factureService.findByAchatRef(ref);
+	}
+	
+	
 
 }

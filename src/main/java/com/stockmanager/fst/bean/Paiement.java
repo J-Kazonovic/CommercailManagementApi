@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Paiement implements Serializable{
 	
@@ -26,6 +28,7 @@ public class Paiement implements Serializable{
 	private Date paiementDate;
 	
 	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Facture facture;
 
 	public Long getId() {
@@ -56,7 +59,7 @@ public class Paiement implements Serializable{
 		return facture;
 	}
 
-	public void setAchat(Facture facture) {
+	public void setFacture(Facture facture) {
 		this.facture = facture;
 	}
 

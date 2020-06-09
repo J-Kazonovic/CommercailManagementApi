@@ -45,9 +45,9 @@ public class PaiementRest {
 		return pS.findAll();
 	}
 
-	@GetMapping("achat/ref/{ref}")
-	public List<Paiement> findByAchatRef(@PathVariable String ref) {
-		return pS.findByAchatRef(ref);
+	@GetMapping("facture/ref/{ref}")
+	public List<Paiement> findByFactureRef(@PathVariable String ref) {
+		return pS.findByFactureRef(ref);
 	}
 	
 	
