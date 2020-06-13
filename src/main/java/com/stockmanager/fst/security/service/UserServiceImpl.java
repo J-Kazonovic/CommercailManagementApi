@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
 		if(userDB!=null) {
 			return -1;
 		}else {
-			System.out.println(user.getRoles());
+			user.setActive(true);
 			uDao.save(user);
 			return urS.addRolesToUser(user, user.getRoles());
 			
