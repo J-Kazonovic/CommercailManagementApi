@@ -29,9 +29,9 @@ public class AchatItemRest {
 		return dmmandeItemService.findByAchatRef(ref);
 	}
 
-	@DeleteMapping("/{id}")
-	public int deleteByAchatItemId(@PathVariable Long id) {
-		return dmmandeItemService.deleteByAchatItemId(id);
+	@DeleteMapping("/{libelle}")
+	public int deleteByProduitLibelle(@PathVariable String libelle) {
+		return dmmandeItemService.deleteByProduitLibelle(libelle);
 	}
 
 

@@ -31,15 +31,17 @@ public class StockItemRest {
 		return stockItemService.findByProduitRef(ref);
 	}
 
-	@DeleteMapping("/{id}")
-	public int deleteByStockId(@PathVariable Long id) {
-		return stockItemService.deleteByStockId(id);
+	@DeleteMapping("/{libelle}")
+	public int deleteByProduitLibelle(@PathVariable String libelle) {
+		return stockItemService.deleteByProduitLibelle(libelle);
 	}
 
 	@GetMapping("/stock/ref/{ref}")
 	public List<StockItem> findByStockRef(@PathVariable String ref) {
 		return stockItemService.findByStockRef(ref);
 	}
+
+
 
 	@GetMapping("/")
 	public List<StockItem> findAll() {

@@ -59,7 +59,6 @@ public class StockServiceImpl implements StockService {
 	@Override
 	public int deleteById(Long id) {
 		Stock stock=stockDao.findById(id).get();
-		stockI.deleteByStockId(stock.getId());
 		stockDao.deleteById(stock.getId());
 		return 1;
 	}

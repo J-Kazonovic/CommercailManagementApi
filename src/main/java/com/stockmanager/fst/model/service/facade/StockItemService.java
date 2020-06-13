@@ -12,7 +12,7 @@ public interface StockItemService {
 	
 	
 	int save(Stock stock, List<StockItem> stockItems);
-	int deleteByStockId(Long id);
+	public int deleteByProduitLibelle(String libelle);
 	
 	List<StockItem> findByStockRef(String ref);
 	List<StockItem> findAll();
