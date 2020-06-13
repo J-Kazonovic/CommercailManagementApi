@@ -11,7 +11,7 @@ import com.stockmanager.fst.bean.StockItem;
 
 @Repository
 public interface StockItemDao extends JpaRepository<StockItem, Long> {
-	int deleteByStockId(Long id);
+	public int deleteByProduitLibelle(String libelle);
 	List<StockItem> findByStockRef(String ref);
 	List<StockItem> findByProduitRef(String ref);
 }

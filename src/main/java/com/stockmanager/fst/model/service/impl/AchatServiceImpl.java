@@ -78,7 +78,6 @@ public class AchatServiceImpl implements AchatService {
 	@Override
 	public int deleteById(Long id) {
 		Achat achat=achatDao.findById(id).get();
-		aiS.deleteByAchatId(achat.getId());
 		achatDao.deleteById(achat.getId());
 		return 1;
 	}

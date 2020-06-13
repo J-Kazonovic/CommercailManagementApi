@@ -4,6 +4,8 @@ package com.stockmanager.fst.model.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,13 +28,6 @@ public class StockItemServiceImpl implements StockItemService {
 	@Autowired
 	private ProduitService ps;
 	
-
-
-
-	@Override
-	public int deleteByStockId(Long id) {
-		return stockItemDao.deleteByStockId(id);
-	}
 
 
 	@Override
@@ -63,6 +58,14 @@ public class StockItemServiceImpl implements StockItemService {
 	@Override
 	public List<StockItem> findByProduitRef(String ref) {
 		return stockItemDao.findByProduitRef(ref);
+	}
+
+
+	@Override
+	@Transactional
+	public int deleteByProduitLibelle(String libelle) {
+		int delProduit =stockItemDao.deleteByProduitLibelle(libelle);
+		return delProduit;
 	}
 	
 }

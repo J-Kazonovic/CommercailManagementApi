@@ -4,6 +4,8 @@ package com.stockmanager.fst.model.service.impl;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +45,10 @@ public class AchatItemServiceImpl implements AchatItemService {
 	}
 
 	@Override
-	public int deleteByAchatId(Long id) {
-		return achatItemDao.deleteByAchatId(id);
+	@Transactional
+	public int deleteByProduitLibelle(String libelle) {
+		int delProduit =achatItemDao.deleteByProduitLibelle(libelle);
+		return delProduit;
 	}
 
 	

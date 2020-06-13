@@ -11,6 +11,6 @@ import com.stockmanager.fst.bean.AchatItem;
 public interface AchatItemDao extends JpaRepository<AchatItem, Long> {
 	
     List<AchatItem> findByAchatRef(String ref);
-	int deleteByAchatId(Long id);
+    public int deleteByProduitLibelle(String libelle);
 	
 }

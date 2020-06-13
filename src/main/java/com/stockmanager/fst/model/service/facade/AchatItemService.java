@@ -11,7 +11,7 @@ public interface AchatItemService {
 	
 	void valideAndsaveAI(List<AchatItem> achatItems, Achat achat);
 	int deleteByAchatItemId(Long id);
-	int deleteByAchatId(Long id);
+	public int deleteByProduitLibelle(String libelle);
 	
 	List<AchatItem> findByAchatRef(String ref);
 	List<AchatItem> findAll();
