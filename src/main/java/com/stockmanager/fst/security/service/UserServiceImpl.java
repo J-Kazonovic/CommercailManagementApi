@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.Fournisseur;
@@ -18,14 +19,18 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UserRoleService urS;
+	
+	 @Autowired
+	 private PasswordEncoder passwordEncoder;
 
 	@Override
 	public int save(MyUser user) {
 		MyUser userDB=uDao.findByName(user.getName());
+		String hashedPassword = passwordEncoder.encode(user.getPassword());
 		if(userDB!=null) {
 			return -1;
 		}else {
-			user.setActive(true);
+			user.setPassword(hashedPassword);
 			uDao.save(user);
 			return urS.addRolesToUser(user, user.getRoles());
 			
@@ -34,7 +39,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int update(MyUser user) {
-		MyUser userDB=findByNom(user.getName());
+		MyUser userDB=uDao.findById(user.getId()).get();
 		if(userDB==null) {
 			return -1;
 		}else {

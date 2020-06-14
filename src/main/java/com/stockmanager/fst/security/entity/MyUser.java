@@ -25,7 +25,10 @@ public class MyUser implements Serializable {
 	private Long id;
     private String name;
     private String password;
+    private String email;
+	private String tel;
     private boolean active;
+    
     
     @OneToMany(mappedBy = "user")
     private List<UserRole> roles;
@@ -75,6 +78,24 @@ public class MyUser implements Serializable {
 
 	public void setRoles(List<UserRole> roles) {
 		this.roles = roles;
+	}
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	@Override

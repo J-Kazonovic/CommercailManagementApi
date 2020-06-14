@@ -20,6 +20,7 @@ public class UserRole implements Serializable{
 	private Long id;
 	
 	@ManyToOne
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private MyUser user;
 	
 	@ManyToOne
