@@ -1,12 +1,15 @@
 package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -29,9 +32,13 @@ public class AchatItem implements Serializable{
 	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Achat achat;
+	
 	@ManyToOne
 	private Produit produit;
 	
+	@OneToMany(mappedBy="achatItem")
+	private List<AchatEbpItemsLink> ebLinks;
+
 	
 	
 	public Long getId() {
@@ -59,9 +66,6 @@ public class AchatItem implements Serializable{
 	public void setAchat(Achat demmande) {
 		this.achat = demmande;
 	}
-
-	
-	
 	
 	public double getUnitPrice() {
 		return unitPrice;
@@ -81,9 +85,15 @@ public class AchatItem implements Serializable{
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+		
 	
-	
-	
+
+	public List<AchatEbpItemsLink> getEbLinks() {
+		return ebLinks;
+	}
+	public void setEbLinks(List<AchatEbpItemsLink> ebLinks) {
+		this.ebLinks = ebLinks;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +101,8 @@ public class AchatItem implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -108,8 +120,6 @@ public class AchatItem implements Serializable{
 		return true;
 	}
 	public AchatItem() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

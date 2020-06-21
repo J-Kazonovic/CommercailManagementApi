@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.stockmanager.fst.model.service.util.Statuts;
+import com.stockmanager.fst.security.entity.MyUser;
 
 @Entity
 public class Achat implements Serializable {
@@ -45,7 +46,7 @@ public class Achat implements Serializable {
 	private Date dateLivraison;// Date fin de livraison
 
 	@ManyToOne
-	private Personnel comptable;
+	private MyUser comptable;
 
 	@ManyToOne
 	private Fournisseur fournisseur;
@@ -96,12 +97,22 @@ public class Achat implements Serializable {
 		this.totalRester = totalRester;
 	}
 
-	public Personnel getComptable() {
+	
+
+	public MyUser getComptable() {
 		return comptable;
 	}
 
-	public void setComptable(Personnel comptable) {
+	public void setComptable(MyUser comptable) {
 		this.comptable = comptable;
+	}
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
 	}
 
 	public String getStatut() {

@@ -56,15 +56,22 @@ public class ExpressionBesoinRest {
 	public List<ExpressionBesoin> getAllExpB() {
 		return ebs.getAllExpB();
 	}*/
+	
+	
 
     @GetMapping("/entite/{libelle}")
 	public List<ExpressionBesoin> getByEntiteAdministrativeLibelle(@PathVariable String libelle) {
 		return ebs.getByEntiteAdministrativeLibelle(libelle);
 	}
     
-    @GetMapping("/personnel/{cin}")
-    public List<ExpressionBesoin> getByPersonnelCin(@PathVariable String cin) {
-		return ebs.getByPersonnelCin(cin);
+    @GetMapping("/eb/{title}")
+    public ExpressionBesoin findByTitle(@PathVariable String title) {
+		return ebs.findByTitle(title);
+	}
+
+	@GetMapping("/personnel/{name}")
+    public List<ExpressionBesoin> getByPersonnelCin(@PathVariable String name) {
+		return ebs.getByPersonnelCin(name);
 	}
 
     @GetMapping("/date/{saveDate}")

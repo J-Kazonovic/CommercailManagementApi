@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.stockmanager.fst.bean.Dept;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +28,8 @@ public class MyUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     private String name;
+    
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String email;
 	private String tel;
@@ -33,6 +39,8 @@ public class MyUser implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<UserRole> roles;
 
+    @ManyToOne
+    private Dept dept;
     
     
     
@@ -71,6 +79,9 @@ public class MyUser implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	
+	
+
 
 	public List<UserRole> getRoles() {
 		return roles;
@@ -96,6 +107,16 @@ public class MyUser implements Serializable {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+	
+	
+
+	public Dept getDept() {
+		return dept;
+	}
+
+	public void setDept(Dept dept) {
+		this.dept = dept;
 	}
 
 	@Override

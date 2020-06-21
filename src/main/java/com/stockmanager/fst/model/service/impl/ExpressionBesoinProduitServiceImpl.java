@@ -12,13 +12,14 @@ import com.stockmanager.fst.bean.Produit;
 import com.stockmanager.fst.model.dao.ExpressionBesoinProduitDao;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ProduitService;
+import com.stockmanager.fst.model.service.util.Statuts;
 
 @Service
 public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProduitService {
 	@Autowired
 	private ProduitService ps;
 	@Autowired
-	private ExpressionBesoinProduitDao expBsProDao;
+	private ExpressionBesoinProduitDao ebpDao;
 
 	@Override
 	public void valideAndsaveEBP(List<ExpressionBesoinProduit> exbProduit, ExpressionBesoin eb) {
@@ -29,32 +30,51 @@ public class ExpressionBesoinProduitServiceImpl implements ExpressionBesoinProdu
 			// Product Exist
 			expBP.setProduit(p);
 			expBP.setEb(eb);
-			expBsProDao.save(expBP);
+			ebpDao.save(expBP);
 
 		}
 	}
+	
+
 
 	@Override
 	public int deleteByEbpId(Long id) {
-		expBsProDao.deleteById(id);
+	
+
+		ebpDao.deleteById(id);
 		return 1;
 	}
 
 	@Override
 	public int deleteByEbId(Long id) {
-		return expBsProDao.deleteByEbId(id);
+		int i=0;
+		List<ExpressionBesoinProduit> ebps=findByEbId(id);
+		Iterator<ExpressionBesoinProduit> itr = ebps.iterator();
+		while (itr.hasNext()) {
+			if(itr.next().getBesoin_statut()==Statuts.Accorder) {
+				i=-1;
+				break;
+			}
+		}
+		
+		if(i==0) {
+			return ebpDao.deleteByEbId(id);
+		}else {
+			return i;
+		}
+		
 	}
 	
 	
 	@Override
 	public List<ExpressionBesoinProduit> findByEbId(Long ebID) {
-		return expBsProDao.findByEbId(ebID);
+		return ebpDao.findByEbId(ebID);
 	}
 	
 
 	@Override
 	public List<ExpressionBesoinProduit> findByAll() {
-		return expBsProDao.findAll();
+		return ebpDao.findAll();
 	}
 
 

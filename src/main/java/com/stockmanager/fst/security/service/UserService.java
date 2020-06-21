@@ -14,7 +14,7 @@ public interface UserService {
 
 	int delete(Long id);
 
-	MyUser findByNom(String nom);
+	MyUser findByName(String name);
 
 	List<MyUser> findAll();
 

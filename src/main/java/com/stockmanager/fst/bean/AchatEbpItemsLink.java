@@ -1,34 +1,36 @@
 package com.stockmanager.fst.bean;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.stockmanager.fst.security.entity.MyUser;
 
 @Entity
-public class Dept implements Serializable {
+public class AchatEbpItemsLink implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String libelle;
 	
-	@OneToMany(mappedBy = "dept")
+	@ManyToOne
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private List<MyUser> myUser;
+	private AchatItem achatItem;
 	
+	@ManyToOne
+	private ExpressionBesoinProduit ebp;
+
+	
+	
+	
+	public AchatEbpItemsLink() {
+	}
 
 	public Long getId() {
 		return id;
@@ -38,24 +40,20 @@ public class Dept implements Serializable {
 		this.id = id;
 	}
 
-	public String getLibelle() {
-		return libelle;
+	public AchatItem getAchatItem() {
+		return achatItem;
 	}
 
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	
-	
-
-	
-
-	public List<MyUser> getMyUser() {
-		return myUser;
+	public void setAchatItem(AchatItem achatItem) {
+		this.achatItem = achatItem;
 	}
 
-	public void setMyUser(List<MyUser> myUser) {
-		this.myUser = myUser;
+	public ExpressionBesoinProduit getEbp() {
+		return ebp;
+	}
+
+	public void setEbp(ExpressionBesoinProduit ebp) {
+		this.ebp = ebp;
 	}
 
 	@Override
@@ -63,7 +61,6 @@ public class Dept implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((libelle == null) ? 0 : libelle.hashCode());
 		return result;
 	}
 
@@ -75,23 +72,17 @@ public class Dept implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Dept other = (Dept) obj;
+		AchatEbpItemsLink other = (AchatEbpItemsLink) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (libelle == null) {
-			if (other.libelle != null)
-				return false;
-		} else if (!libelle.equals(other.libelle))
-			return false;
 		return true;
 	}
-
-	public Dept() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
+	
+	
+	
 
 }

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.stockmanager.fst.bean.Dept;
 import com.stockmanager.fst.bean.Fournisseur;
+import com.stockmanager.fst.model.service.facade.DeptService;
 import com.stockmanager.fst.security.dao.UserDao;
 import com.stockmanager.fst.security.entity.MyUser;
 
@@ -18,6 +20,9 @@ public class UserServiceImpl implements UserService{
 	private UserDao uDao;
 	
 	@Autowired
+	private DeptService dS;
+	
+	@Autowired
 	private UserRoleService urS;
 	
 	 @Autowired
@@ -26,10 +31,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int save(MyUser user) {
 		MyUser userDB=uDao.findByName(user.getName());
+		Dept dept=dS.findByLibelle(user.getDept().getLibelle());
 		String hashedPassword = passwordEncoder.encode(user.getPassword());
 		if(userDB!=null) {
 			return -1;
 		}else {
+			user.setDept(dept);
 			user.setPassword(hashedPassword);
 			uDao.save(user);
 			return urS.addRolesToUser(user, user.getRoles());
@@ -40,9 +47,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int update(MyUser user) {
 		MyUser userDB=uDao.findById(user.getId()).get();
+		Dept dept=dS.findByLibelle(user.getDept().getLibelle());
+
 		if(userDB==null) {
 			return -1;
 		}else {
+			user.setDept(dept);
 			uDao.save(user);
 			return urS.addRolesToUser(user, user.getRoles());
 		}
@@ -55,7 +65,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public MyUser findByNom(String name) {
+	public MyUser findByName(String name) {
 		return uDao.findByName(name);
 	}
 

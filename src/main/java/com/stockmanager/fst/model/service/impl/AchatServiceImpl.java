@@ -21,6 +21,8 @@ import com.stockmanager.fst.model.service.facade.FactureService;
 import com.stockmanager.fst.model.service.facade.FournisseurService;
 import com.stockmanager.fst.model.service.facade.PersonnelService;
 import com.stockmanager.fst.model.service.util.Statuts;
+import com.stockmanager.fst.security.entity.MyUser;
+import com.stockmanager.fst.security.service.UserService;
 
 @Service
 @Transactional
@@ -32,8 +34,9 @@ public class AchatServiceImpl implements AchatService {
 	private AchatItemService aiS;
 	@Autowired
 	private FournisseurService fourn;
+
 	@Autowired
-	private PersonnelService ps;
+	private UserService ps;
 	@Autowired
 	private FactureService fS;
 	
@@ -43,11 +46,13 @@ public class AchatServiceImpl implements AchatService {
 	public Achat save(Achat achat, List<AchatItem> achatItems) {
 		Achat demmandeFound=findByRef(achat.getRef());
 		Fournisseur fr=fourn.findByNom(achat.getFournisseur().getNom());
+		MyUser personnelDB = ps.findByName(achat.getComptable().getName());
+
 		if(demmandeFound!=null) {
 			return null;
 		}else {
 			achat.setDateCommande(new Date());
-			achat.setComptable(ps.findByCin("C1"));
+			achat.setComptable(personnelDB);
 			achat.setFournisseur(fr);
 			Achat achatR=achatDao.save(achat);
 			aiS.valideAndsaveAI(achatItems, achat);
@@ -64,7 +69,6 @@ public class AchatServiceImpl implements AchatService {
 		}else {
 			achat.setId(achatDB.getId());
 			achat.setDateCommande(new Date());
-			achat.setComptable(ps.findByCin("C1"));
 			achat.setFournisseur(fr);
 			achatDao.save(achat);
 			aiS.valideAndsaveAI(achatItems, achat);

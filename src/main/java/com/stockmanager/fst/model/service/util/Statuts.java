@@ -13,9 +13,7 @@ public class Statuts {
 	public final static String EnStock = "En Stock";
 
 	// Statut D' Achat
-	public final static String DEMMANDE_BROUILLON = "Demmande De Prix Brouillon";
 	public final static String DEMMANDE= "Demmande De Prix";
-	public final static String DEVI_RECU = "Devis Récu";
 	public final static String COMMANDE = "Bon De Commande";
 	
 	// Statut De Facture

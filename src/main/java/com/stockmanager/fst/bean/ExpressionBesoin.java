@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.stockmanager.fst.security.entity.MyUser;
+
 @Entity
 public class ExpressionBesoin implements Serializable {
 
@@ -38,19 +40,16 @@ public class ExpressionBesoin implements Serializable {
 	
     @ManyToOne
 	@JoinColumn(name="personnel_Id")
-	private Personnel personnel;
+	private MyUser personnel;
 	
 	@ManyToOne
 	private Dept dept;
-	@ManyToOne
-	private Achat demande;
+
 	
 	@OneToMany(mappedBy = "eb") 
 	private List<ExpressionBesoinProduit> ebp;
 	
-	private double montantTotal;
-	
-	private String statut;
+
 	
 	public ExpressionBesoin() {
 		
@@ -77,15 +76,13 @@ public class ExpressionBesoin implements Serializable {
 	}
 
 
-
-
-	public Achat getDemande() {
-		return demande;
+	public MyUser getPersonnel() {
+		return personnel;
 	}
 
 
-	public void setDemande(Achat demande) {
-		this.demande = demande;
+	public void setPersonnel(MyUser personnel) {
+		this.personnel = personnel;
 	}
 
 
@@ -119,25 +116,6 @@ public class ExpressionBesoin implements Serializable {
 	
 
 
-	public double getMontantTotal() {
-		return montantTotal;
-	}
-
-
-	public void setMontantTotal(double montantTotal) {
-		this.montantTotal = montantTotal;
-	}
-	
-	
-
-	public String getStatut() {
-		return statut;
-	}
-
-
-	public void setStatut(String statut) {
-		this.statut = statut;
-	}
 
 
 	public String getEb_desc() {
@@ -147,16 +125,6 @@ public class ExpressionBesoin implements Serializable {
 
 	public void setEb_desc(String eb_desc) {
 		this.eb_desc = eb_desc;
-	}
-
-
-	public Personnel getPersonnel() {
-		return personnel;
-	}
-
-
-	public void setPersonnel(Personnel personnel) {
-		this.personnel = personnel;
 	}
 
 

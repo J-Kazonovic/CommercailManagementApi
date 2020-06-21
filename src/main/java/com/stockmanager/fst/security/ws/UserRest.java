@@ -39,9 +39,9 @@ public class UserRest {
 		return uService.delete(id);
 	}
 
-	@GetMapping("/name/{nom}")
+	@GetMapping("/name/{name}")
 	public MyUser findByNom(@PathVariable String name) {
-		return uService.findByNom(name);
+		return uService.findByName(name);
 	}
 
 	@GetMapping("/")

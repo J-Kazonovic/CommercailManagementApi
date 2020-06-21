@@ -13,7 +13,7 @@ import com.stockmanager.fst.bean.ExpressionBesoin;
 @Repository
 public interface ExpressionBesoinDao extends JpaRepository<ExpressionBesoin, Long> {
 	ExpressionBesoin findByTitle(String title);
-	List<ExpressionBesoin> findByPersonnelCin(String cin);
+	List<ExpressionBesoin> findByPersonnelName(String name);
 	List<ExpressionBesoin> findByDeptLibelle(String libelle);
 	List<ExpressionBesoin> findBySaveDate(Date saveDate);
 }
