@@ -6,11 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stockmanager.fst.bean.Achat;
 import com.stockmanager.fst.bean.Facture;
 import com.stockmanager.fst.bean.Paiement;
 import com.stockmanager.fst.model.dao.PaiementDao;
-import com.stockmanager.fst.model.service.facade.AchatService;
 import com.stockmanager.fst.model.service.facade.FactureService;
 import com.stockmanager.fst.model.service.facade.PaiementService;
 

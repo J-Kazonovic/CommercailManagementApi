@@ -47,12 +47,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int update(MyUser user) {
 		MyUser userDB=uDao.findById(user.getId()).get();
-		Dept dept=dS.findByLibelle(user.getDept().getLibelle());
+		String hashedPassword = passwordEncoder.encode(user.getPassword());
 
 		if(userDB==null) {
 			return -1;
-		}else {
-			user.setDept(dept);
+		}else {	
+			user.setPassword(hashedPassword);
 			uDao.save(user);
 			return urS.addRolesToUser(user, user.getRoles());
 		}

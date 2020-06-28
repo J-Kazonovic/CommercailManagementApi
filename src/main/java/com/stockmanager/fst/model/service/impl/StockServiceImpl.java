@@ -10,20 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.stockmanager.fst.bean.Achat;
-import com.stockmanager.fst.bean.AchatItem;
-import com.stockmanager.fst.bean.Fournisseur;
 import com.stockmanager.fst.bean.Stock;
 import com.stockmanager.fst.bean.StockItem;
-import com.stockmanager.fst.model.dao.AchatDao;
 import com.stockmanager.fst.model.dao.StockDao;
-import com.stockmanager.fst.model.service.facade.AchatItemService;
-import com.stockmanager.fst.model.service.facade.AchatService;
-import com.stockmanager.fst.model.service.facade.FournisseurService;
-import com.stockmanager.fst.model.service.facade.PersonnelService;
 import com.stockmanager.fst.model.service.facade.StockItemService;
 import com.stockmanager.fst.model.service.facade.StockService;
-import com.stockmanager.fst.model.service.util.Statuts;
 
 @Service
 @Transactional
@@ -34,8 +25,6 @@ public class StockServiceImpl implements StockService {
 	@Autowired
 	private StockItemService stockI;
 
-	@Autowired
-	private PersonnelService ps;
 	
 	@Override
 	public int save(Stock stock, List<StockItem> stockItems) {

@@ -16,8 +16,6 @@ import com.stockmanager.fst.model.dao.ExpressionBesoinDao;
 import com.stockmanager.fst.model.service.facade.DeptService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ExpressionBesoinService;
-import com.stockmanager.fst.model.service.facade.PersonnelService;
-import com.stockmanager.fst.model.service.util.Statuts;
 import com.stockmanager.fst.security.entity.MyUser;
 import com.stockmanager.fst.security.service.UserService;
 

@@ -18,7 +18,6 @@ import com.stockmanager.fst.model.dao.AchatEbpItemsLinkDao;
 import com.stockmanager.fst.model.dao.AchatItemDao;
 import com.stockmanager.fst.model.dao.ExpressionBesoinProduitDao;
 import com.stockmanager.fst.model.service.facade.AchatItemService;
-import com.stockmanager.fst.model.service.facade.ExpressionBesoinProduitService;
 import com.stockmanager.fst.model.service.facade.ProduitService;
 import com.stockmanager.fst.model.service.util.Statuts;
 

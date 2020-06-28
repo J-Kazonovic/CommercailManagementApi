@@ -1,7 +1,6 @@
 package com.stockmanager.fst.model.service.impl;
 
 
-import java.util.Iterator;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,14 +8,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.stockmanager.fst.bean.Achat;
-import com.stockmanager.fst.bean.AchatItem;
 import com.stockmanager.fst.bean.Produit;
 import com.stockmanager.fst.bean.Stock;
 import com.stockmanager.fst.bean.StockItem;
-import com.stockmanager.fst.model.dao.AchatItemDao;
 import com.stockmanager.fst.model.dao.StockItemDao;
-import com.stockmanager.fst.model.service.facade.AchatItemService;
 import com.stockmanager.fst.model.service.facade.ProduitService;
 import com.stockmanager.fst.model.service.facade.StockItemService;
 

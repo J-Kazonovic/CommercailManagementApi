@@ -35,6 +35,8 @@ public class MyUser implements Serializable {
 	private String tel;
     private boolean active;
     
+    private String email_password;
+    
     
     @OneToMany(mappedBy = "user")
     private List<UserRole> roles;
@@ -82,6 +84,14 @@ public class MyUser implements Serializable {
 	
 	
 
+
+	public String getEmail_password() {
+		return email_password;
+	}
+
+	public void setEmail_password(String email_password) {
+		this.email_password = email_password;
+	}
 
 	public List<UserRole> getRoles() {
 		return roles;

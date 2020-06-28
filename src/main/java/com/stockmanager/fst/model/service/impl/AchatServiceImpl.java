@@ -12,15 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.stockmanager.fst.bean.Achat;
 import com.stockmanager.fst.bean.AchatItem;
-import com.stockmanager.fst.bean.Facture;
 import com.stockmanager.fst.bean.Fournisseur;
 import com.stockmanager.fst.model.dao.AchatDao;
 import com.stockmanager.fst.model.service.facade.AchatItemService;
 import com.stockmanager.fst.model.service.facade.AchatService;
 import com.stockmanager.fst.model.service.facade.FactureService;
 import com.stockmanager.fst.model.service.facade.FournisseurService;
-import com.stockmanager.fst.model.service.facade.PersonnelService;
-import com.stockmanager.fst.model.service.util.Statuts;
 import com.stockmanager.fst.security.entity.MyUser;
 import com.stockmanager.fst.security.service.UserService;
 

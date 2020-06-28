@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.stockmanager.fst.bean.Category;
 import com.stockmanager.fst.bean.Produit;
-import com.stockmanager.fst.bean.Stock;
 import com.stockmanager.fst.bean.Unite;
 import com.stockmanager.fst.model.dao.ProduitDao;
 import com.stockmanager.fst.model.service.facade.CategoryService;
