@@ -44,7 +44,7 @@ public class AchatItemServiceImpl implements AchatItemService {
 			achatItem.setAchat(achat);
 			achatItemDao.save(achatItem);
 			setEbpsLink(achatItem.getEbLinks(), achatItem);
-			if(achat.getStatut().equals(Statuts.COMMANDE)) {
+			if(Statuts.COMMANDE.equals(achat.getStatut())) {
 				upDateEbp(achatItem);
 			}
 		}
